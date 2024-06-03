@@ -1,0 +1,237 @@
+{
+  "package": {},
+  "code": {
+    "DetermineIntent.jinja2": {
+      "name": "DetermineIntent.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "chat_history": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${inputs.chat_history}"
+        },
+        "query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${inputs.query}"
+        }
+      },
+      "source": "DetermineIntent.jinja2",
+      "is_builtin": false,
+      "toolId": "DetermineIntent.jinja2"
+    },
+    "ExtractIntent.py": {
+      "name": "ExtractIntent.py",
+      "type": "python",
+      "inputs": {
+        "input": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${DetermineIntent.output}"
+        },
+        "query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${inputs.query}"
+        }
+      },
+      "source": "ExtractIntent.py",
+      "function": "extract_intent",
+      "is_builtin": false,
+      "toolId": "ExtractIntent.py"
+    },
+    "RetrieveDocuments.py": {
+      "name": "RetrieveDocuments.py",
+      "type": "python",
+      "inputs": {
+        "vectorFields": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "content_vector"
+        },
+        "embeddingModelConnection": {
+          "type": [
+            "AzureOpenAIConnection"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "Default_AzureOpenAI"
+        },
+        "embeddingModelName": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "text-embedding-ada-002"
+        },
+        "indexName": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "chatwithdatalsauseast-index"
+        },
+        "queries": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${ExtractIntent.output.search_intents}"
+        },
+        "queryType": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "vectorSimpleHybrid"
+        },
+        "searchConnection": {
+          "type": [
+            "CognitiveSearchConnection"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "chatwithdatalsauseast-search"
+        },
+        "semanticConfiguration": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "None"
+        },
+        "topK": {
+          "type": [
+            "int"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "5"
+        }
+      },
+      "source": "RetreiveDocuments.py",
+      "function": "search",
+      "is_builtin": false,
+      "toolId": "RetrieveDocuments.py"
+    },
+    "FormatRetrievedDocuments.py": {
+      "name": "FormatRetrievedDocuments.py",
+      "type": "python",
+      "inputs": {
+        "docs": {
+          "type": [
+            "list"
+          ],
+          "value": "${RetrieveDocuments.output}"
+        },
+        "maxTokens": {
+          "type": [
+            "int"
+          ],
+          "value": "3500"
+        }
+      },
+      "source": "FormatRetrievedDocuments.py",
+      "function": "format_retrieved_documents",
+      "is_builtin": false,
+      "toolId": "FormatRetrievedDocuments.py"
+    },
+    "FormatConversation.py": {
+      "name": "FormatConversation.py",
+      "type": "python",
+      "inputs": {
+        "history": {
+          "type": [
+            "list"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${inputs.chat_history}"
+        },
+        "maxTokens": {
+          "type": [
+            "int"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "800"
+        }
+      },
+      "source": "FormatConversation.py",
+      "function": "format_conversation",
+      "is_builtin": false,
+      "toolId": "FormatConversation.py"
+    },
+    "DetermineReply.jinja2": {
+      "name": "DetermineReply.jinja2",
+      "type": "prompt",
+      "inputs": {
+        "conversation": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${FormatConversation.output}"
+        },
+        "documentation": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${FormatRetrievedDocuments.output}"
+        },
+        "user_query": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${ExtractIntent.output.current_message_intent}"
+        }
+      },
+      "source": "DetermineReply.jinja2",
+      "is_builtin": false,
+      "toolId": "DetermineReply.jinja2"
+    },
+    "FormatReply.py": {
+      "name": "FormatReply.py",
+      "type": "python",
+      "inputs": {
+        "reply": {
+          "type": [
+            "string"
+          ],
+          "allow_manual_entry": false,
+          "is_multi_select": false,
+          "value": "${DetermineReply.output}"
+        }
+      },
+      "source": "FormatReply.py",
+      "function": "format_reply",
+      "is_builtin": false,
+      "toolId": "FormatReply.py"
+    }
+  }
+}

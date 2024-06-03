@@ -1,0 +1,8 @@
+{
+  "gpt_coherence": 5.0,
+  "gpt_similarity": 2.0,
+  "gpt_fluency": 5.0,
+  "gpt_relevance": 2.0,
+  "gpt_groundedness": 5.0,
+  "f1_score": 0.14
+}

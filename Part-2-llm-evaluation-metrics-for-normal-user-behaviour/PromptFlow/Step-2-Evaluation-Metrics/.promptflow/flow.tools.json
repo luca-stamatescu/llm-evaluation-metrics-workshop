@@ -1,0 +1,334 @@
+{
+  "package": {
+    "promptflow.tools.embedding.embedding": {
+      "name": "Embedding",
+      "description": "Use Open AI's embedding model to create an embedding vector representing the input text.",
+      "type": "python",
+      "module": "promptflow.tools.embedding",
+      "function": "embedding",
+      "inputs": {
+        "connection": {
+          "type": [
+            "AzureOpenAIConnection",
+            "OpenAIConnection"
+          ]
+        },
+        "deployment_name": {
+          "type": [
+            "string"
+          ],
+          "enabled_by": "connection",
+          "enabled_by_type": [
+            "AzureOpenAIConnection"
+          ],
+          "capabilities": {
+            "completion": false,
+            "chat_completion": false,
+            "embeddings": true
+          },
+          "model_list": [
+            "text-embedding-ada-002",
+            "text-search-ada-doc-001",
+            "text-search-ada-query-001"
+          ]
+        },
+        "model": {
+          "type": [
+            "string"
+          ],
+          "enabled_by": "connection",
+          "enabled_by_type": [
+            "OpenAIConnection"
+          ],
+          "enum": [
+            "text-embedding-ada-002",
+            "text-search-ada-doc-001",
+            "text-search-ada-query-001"
+          ],
+          "allow_manual_entry": true
+        },
+        "input": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "package": "promptflow-tools",
+      "package_version": "1.4.0"
+    }
+  },
+  "code": {
+    "fluency_prompt.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "answer": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "fluency_prompt.jinja2"
+    },
+    "gpt_retrieval2.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "gpt_retrieval2.jinja2"
+    },
+    "gpt_groundedness_prompt.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "answer": {
+          "type": [
+            "string"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "gpt_groundedness_prompt.jinja2"
+    },
+    "concat_scores.py": {
+      "type": "python",
+      "inputs": {
+        "gpt_coherence_score": {
+          "type": [
+            "string"
+          ]
+        },
+        "gpt_similarity_score": {
+          "type": [
+            "string"
+          ]
+        },
+        "gpt_fluency_score": {
+          "type": [
+            "string"
+          ]
+        },
+        "gpt_relevance_score": {
+          "type": [
+            "string"
+          ]
+        },
+        "gpt_groundedness_score": {
+          "type": [
+            "string"
+          ]
+        },
+        "f1_score": {
+          "type": [
+            "double"
+          ]
+        },
+        "ada_cosine_similarity": {
+          "type": [
+            "double"
+          ]
+        }
+      },
+      "source": "concat_scores.py",
+      "function": "concat_results"
+    },
+    "gpt_similarity_prompt.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "answer": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "ground_truth": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "gpt_similarity_prompt.jinja2"
+    },
+    "parse_retrieval.py": {
+      "type": "python",
+      "inputs": {
+        "retrieval_output": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "parse_retrieval.py",
+      "function": "parse_retrieval_output"
+    },
+    "aggregate_variants_results.py": {
+      "type": "python",
+      "inputs": {
+        "results": {
+          "type": [
+            "object"
+          ]
+        },
+        "metrics": {
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "source": "aggregate_variants_results.py",
+      "function": "aggregate_variants_results"
+    },
+    "coherence_score.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "answer": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "coherence_score.jinja2"
+    },
+    "validate_input.py": {
+      "type": "python",
+      "inputs": {
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "answer": {
+          "type": [
+            "string"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        },
+        "ground_truth": {
+          "type": [
+            "string"
+          ]
+        },
+        "selected_metrics": {
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "source": "validate_input.py",
+      "function": "validate_input"
+    },
+    "select_metrics.py": {
+      "type": "python",
+      "inputs": {
+        "metrics": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "select_metrics.py",
+      "function": "select_metrics"
+    },
+    "f1_score.py": {
+      "type": "python",
+      "inputs": {
+        "ground_truth": {
+          "type": [
+            "string"
+          ]
+        },
+        "answer": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "f1_score.py",
+      "function": "compute_f1_score"
+    },
+    "ada_cosine_similarity_score.py": {
+      "type": "python",
+      "inputs": {
+        "a": {
+          "type": [
+            "object"
+          ]
+        },
+        "b": {
+          "type": [
+            "object"
+          ]
+        }
+      },
+      "source": "ada_cosine_similarity_score.py",
+      "function": "compute_ada_cosine_similarity"
+    },
+    "gpt_relevance_prompt.jinja2": {
+      "type": "llm",
+      "inputs": {
+        "answer": {
+          "type": [
+            "string"
+          ]
+        },
+        "question": {
+          "type": [
+            "string"
+          ]
+        },
+        "context": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "gpt_relevance_prompt.jinja2"
+    },
+    "binary_retrieval_metric.py": {
+      "type": "python",
+      "inputs": {
+        "retrievedcontext": {
+          "type": [
+            "string"
+          ]
+        },
+        "ground_truth_context": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "binary_retrieval_metric.py",
+      "function": "is_groundtruthcontext_in_retrievedcontext"
+    }
+  }
+}

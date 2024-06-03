@@ -1,0 +1,422 @@
+id: QnA_gpt_coherence_eval
+name: QnA Coherence Evaluation
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  question:
+    type: string
+    default: Does Azure OpenAI use customer data to retrain models?
+    is_chat_input: false
+  answer:
+    type: string
+    default: Azure OpenAI does not use customer data to retrain models by default.
+      However, Azure OpenAI provides a feature called "Azure OpenAI on your
+      data" that allows organizations to generate customized insights, content,
+      and searches using their designated data sources[doc0]. This feature works
+      with the capabilities of the OpenAI models in Azure OpenAI to provide more
+      accurate and relevant responses to user queries in natural language[doc0].
+      It can be integrated with customer's existing applications and workflows,
+      offers insights into key performance indicators, and can interact with
+      users seamlessly[doc0]. The use of customer data with Azure OpenAI on your
+      data is optional and requires explicit integration and
+      configuration[doc0].
+    is_chat_input: false
+  context:
+    type: string
+    default: "{\"retrieved_documents\": [{\"[doc0]\": {\"title\": \"17/12/2023,
+      11:51 Data, privacy, and security for Azure OpenAI Service - Azure AI
+      services | Microsoft Learn\", \"content\": \"17/12/2023, 11:51 Data,
+      privacy, and security for Azure OpenAI Service - Azure AI services |
+      Microsoft
+      Learn\\n\\nhttps://learn.microsoft.com/en-us/legal/cognitive-services/ope\
+      nai/data-privacy 1/7\\n\\nData, privacy, and security for
+      Azure\\n\\nOpenAI Service\\nArticle \\u2022 06/24/2023\\n\\nThis article
+      provides details regarding how data provided by you to the Azure
+      OpenAI\\n\\nservice is processed, used, and stored. Azure OpenAI stores
+      and processes data to\\n\\nprovide the service and to monitor for uses
+      that violate the applicable product terms.\\n\\nPlease also see the
+      Microsoft Products and Services Data Protection Addendum ,\\n\\nwhich
+      governs data processing by the Azure OpenAI Service except as
+      otherwise\\n\\nprovided in the applicable Product Terms .\\n\\nAzure
+      OpenAI processes the following types of data:\\n\\nPrompts and generated
+      content. Prompts are submitted by the user, and content\\n\\nis generated
+      by the service, via the completions, chat completions, images
+      and\\n\\nembeddings operations.\\n\\n\\uff09 Important\\n\\nYour prompts
+      (inputs) and completions (outputs), your embeddings, and
+      your\\n\\ntraining data:\\n\\nare NOT available to other
+      customers.\\n\\nare NOT available to OpenAI.\\n\\nare NOT used to improve
+      OpenAI models.\\n\\nare NOT used to improve any Microsoft or 3rd party
+      products or services.\\n\\nare NOT used for automatically improving Azure
+      OpenAI models for your use\\n\\nin your resource (The models are
+      stateless, unless you explicitly fine-tune\\n\\nmodels with your training
+      data).\\n\\nYour fine-tuned Azure OpenAI models are available exclusively
+      for your use.\\n\\nThe Azure OpenAI Service is fully controlled by
+      Microsoft; Microsoft hosts the\\n\\nOpenAI models in Microsoft\\u2019s
+      Azure environment and the Service does NOT\\n\\ninteract with any services
+      operated by OpenAI (e.g. ChatGPT, or the OpenAI API).\\n\\nWhat data does
+      the Azure OpenAI
+      Service\\n\\nprocess?\\n\\nhttps://aka.ms/DPA\\nhttps://aka.ms/DPA\\nhttp\
+      s://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzure/MCA#\
+      ServiceSpecificTerms\\nhttps://www.microsoft.com/licensing/terms/producto\
+      ffering/MicrosoftAzure/MCA#ServiceSpecificTerms\\n\\n17/12/2023, 11:51
+      Data, privacy, and security for Azure OpenAI Service - Azure AI services |
+      Microsoft
+      Learn\\n\\nhttps://learn.microsoft.com/en-us/legal/cognitive-services/ope\
+      nai/data-privacy 2/7\\n\\nAugmented data included with prompts. When using
+      the \\\"on your data\\\" feature,\\n\\nthe service retrieves relevant data
+      from a configured data store and augments the\\n\\nprompt to produce
+      generations that are grounded with your data.\\n\\nTraining & validation
+      data. You can provide your own training data consisting
+      of\\n\\nprompt-completion pairs for the purposes of fine-tuning an OpenAI
+      model.\\n\\nThe diagram below illustrates how your data is processed. This
+      diagram covers three\\n\\ndifferent types of processing:\\n\\n\\ufffd. How
+      the Azure OpenAI Service processes your prompts to generate
+      content\\n\\n(including when additional data from a connected data source
+      is added to a\\n\\nprompt using Azure OpenAI on your data).\\n\\n\\ufffd.
+      How the Azure OpenAI Service creates a fine-tuned (custom) model with
+      your\\n\\ntraining data.\\n\\n\\ufffd. How the Azure OpenAI Service and
+      Microsoft personnel analyze prompts,\\n\\ncompletions and images for
+      harmful content and for patterns suggesting the use\\n\\nof the service in
+      a manner that violates the Code of Conduct or other
+      applicable\\n\\nproduct terms\\n\\nAs depicted in the diagram above,
+      managed customers may apply to modify abuse\\n\\nmonitoring .\\n\\nHow
+      does the Azure OpenAI Service process\\n\\ndata?\\n\\nGenerating
+      completions, images or
+      embeddings\\n\\nhttps://learn.microsoft.com/en-us/azure/ai-services/opena\
+      i/how-to/fine-tuning?pivots=programming-language-studio\\nhttps://aka.ms/\
+      oai/modifiedaccess\\nhttps://aka.ms/oai/modifiedaccess\\nhttps://aka.ms/o\
+      ai/modifiedaccess\\n\\n17/12/2023, 11:51 Data, privacy, and security for
+      Azure OpenAI Service - Azure AI services | Microsoft
+      Learn\\n\\nhttps://learn.microsoft\"}}, {\"[doc1]\": {\"title\":
+      \"17/12/2023, 11:51 Data, privacy, and security for Azure OpenAI Service -
+      Azure AI services | Microsoft Learn\", \"content\":
+      \"com/en-us/legal/cognitive-services/openai/data-privacy 3/7\\n\\nModels
+      (base or fine-tuned) deployed in your resource process your input prompts
+      and\\n\\ngenerate responses with text, images or embeddings. The service
+      is configured to\\n\\nsynchronously evaluate the prompt and completion
+      data in real time to check for\\n\\nharmful content types and stops
+      generating content that exceeds the configured\\n\\nthresholds. Learn more
+      at Azure OpenAI Service content filtering.\\n\\nThe models are stateless:
+      no prompts or generations are stored in the model.\\n\\nAdditionally,
+      prompts and generations are not used to train, retrain, or improve
+      the\\n\\nbase models.\\n\\nThe Azure OpenAI \\\"on your data\\\" feature
+      lets you connect data sources to ground the\\n\\ngenerated results with
+      your data. The data remains stored in the data source and\\n\\nlocation
+      you designate. No data is copied into the Azure OpenAI service. When a
+      user\\n\\nprompt is received, the service retrieves relevant data from the
+      connected data source\\n\\nand augments the prompt. The model processes
+      this augmented prompt and the\\n\\ngenerated content is returned as
+      described above.\\n\\nAs depicted in the diagram above, managed customers
+      may apply to modify abuse\\n\\nmonitoring .\\n\\nCustomers can upload
+      their training data to the service to fine tune a model.
+      Uploaded\\n\\ntraining data is stored in the Azure OpenAI resource in the
+      customer\\u2019s Azure tenant.\\n\\nAugmenting prompts with data retrieved
+      from your data sources to\\n\\n\\\"ground\\\" the generated
+      results\\n\\nCreating a customized (fine-tuned) model with your
+      data:\\n\\nhttps://learn.microsoft.com/en-us/azure/ai-services/openai/con\
+      cepts/content-filter\\nhttps://aka.ms/oai/modifiedaccess\\nhttps://aka.ms\
+      /oai/modifiedaccess\\nhttps://aka.ms/oai/modifiedaccess\\n\\n17/12/2023,
+      11:51 Data, privacy, and security for Azure OpenAI Service - Azure AI
+      services | Microsoft
+      Learn\\n\\nhttps://learn.microsoft.com/en-us/legal/cognitive-services/ope\
+      nai/data-privacy 4/7\\n\\nTraining data and fine-tuned models:\\n\\nAre
+      available exclusively for use by the customer.\\n\\nAre stored within the
+      same region as the Azure OpenAI resource.\\n\\nCan be double encrypted at
+      rest (by default with Microsoft's AES-256 encryption\\n\\nand optionally
+      with a customer managed key).\\n\\nCan be deleted by the customer at any
+      time.\\n\\nTraining data uploaded for fine-tuning is not used to train,
+      retrain, or improve any\\n\\nMicrosoft or 3rd party base models.\\n\\nTo
+      reduce the risk of harmful use of the Azure OpenAI Service, the Azure
+      OpenAI Service\\n\\nincludes both content filtering and abuse monitoring
+      features. To learn more about\\n\\ncontent filtering, see Azure OpenAI
+      Service content filtering. To learn more about abuse\\n\\nmonitoring, see
+      abuse monitoring.\\n\\nContent filtering occurs synchronously as the
+      service processes prompts to generate\\n\\ncontent as described above and
+      here. No prompts or generated results are stored in the\\n\\ncontent
+      classifier models, and prompts and results are not used to train, retrain,
+      or\\n\\nimprove the classifier models.\\n\\nAzure OpenAI abuse monitoring
+      detects and mitigates instances of recurring content\\n\\nand/or behaviors
+      that suggest use of the service in a manner that may violate the
+      code\\n\\nof conduct or other applicable product terms. To detect and
+      mitigate abuse, Azure\\n\\nOpenAI stores all prompts and generated content
+      securely for up to thirty (30) days. (No\\n\\nprompts or completions are
+      stored if the customer is approved for and elects to\\n\\nconfigure abuse
+      monitoring off, as described below.)\\n\\nThe data store where prompts and
+      completions are stored is logically separated by\\n\\ncustomer resource
+      (each request includes the resource ID of the customer\\u2019s
+      Azure\\n\\nOpenAI resource). A separate data store is located in each
+      region  in which the Azure\\n\\nOpenAI Service is available, and a
+      customer\\u2019s prompts and generated content are stored\\n\\nin the
+      Azure region where the customer\\u2019s Azure OpenAI service resource is
+      deployed,\\n\\nwithin the Azure OpenAI service boundary. Human reviewers
+      assessing potential abuse\\n\\ncan access prompts and completions data
+      only when that data has been flagged by the\\n\\nabuse monitoring system.
+      The human reviewers are authorized Microsoft employees\\n\\nwho access the
+      data via point wise queries using request IDs, Secure
+      Access\\n\\nWorkstations (SAWs), and Just-In-Time (JIT) request approval
+      granted by team\\n\\nmanagers\"}}]}"
+    is_chat_input: false
+  ground_truth:
+    type: string
+    default: No, Azure OpenAI doesn't use customer data to retrain models.
+    is_chat_input: false
+  metrics:
+    type: string
+    default: gpt_groundedness,f1_score,gpt_fluency,gpt_coherence,gpt_similarity,gpt_relevance
+    is_chat_input: false
+  groundtruthcontext:
+    type: string
+    is_chat_input: false
+    default: prompts and generations are not used to train, retrain, or improve
+      the\n\nbase models.
+outputs:
+  gpt_retrieval:
+    type: string
+    reference: ${gpt_retrieval2.output}
+  gpt_coherence:
+    type: string
+    reference: ${concat_scores.output.gpt_coherence}
+  ada_similarity:
+    type: string
+    reference: ${concat_scores.output.ada_similarity}
+  gpt_relevance:
+    type: string
+    reference: ${concat_scores.output.gpt_relevance}
+  analytical_retrieval:
+    type: string
+    reference: ${analytical_retrieval.output}
+  gpt_groundedness:
+    type: string
+    reference: ${concat_scores.output.gpt_groundedness}
+  gpt_similarity:
+    type: string
+    reference: ${concat_scores.output.gpt_similarity}
+  gpt_fluency:
+    type: string
+    reference: ${concat_scores.output.gpt_fluency}
+  f1_score:
+    type: string
+    reference: ${concat_scores.output.f1_score}
+nodes:
+- name: gpt_coherence
+  type: llm
+  source:
+    type: code
+    path: coherence_score.jinja2
+  inputs:
+    deployment_name: gpt-4
+    temperature: 0
+    top_p: 1
+    max_tokens: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    question: ${inputs.question}
+    answer: ${inputs.answer}
+  connection: ptupaygobenchmarkingaoai
+  api: chat
+  activate:
+    when: ${validate_input.output.gpt_coherence}
+    is: true
+  use_variants: false
+- name: concat_scores
+  type: python
+  source:
+    type: code
+    path: concat_scores.py
+  inputs:
+    ada_cosine_similarity: ${ada_similarity.output}
+    f1_score: ${f1_score.output}
+    gpt_coherence_score: ${gpt_coherence.output}
+    gpt_fluency_score: ${gpt_fluency.output}
+    gpt_groundedness_score: ${gpt_groundedness.output}
+    gpt_relevance_score: ${gpt_relevance.output}
+    gpt_similarity_score: ${gpt_similarity.output}
+  use_variants: false
+- name: gpt_similarity
+  type: llm
+  source:
+    type: code
+    path: gpt_similarity_prompt.jinja2
+  inputs:
+    deployment_name: gpt-4
+    temperature: 0
+    top_p: 1
+    max_tokens: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    answer: ${inputs.answer}
+    ground_truth: ${inputs.ground_truth}
+    question: ${inputs.question}
+  connection: ptupaygobenchmarkingaoai
+  api: chat
+  activate:
+    when: ${validate_input.output.gpt_similarity}
+    is: true
+  use_variants: false
+- name: gpt_relevance
+  type: llm
+  source:
+    type: code
+    path: gpt_relevance_prompt.jinja2
+  inputs:
+    deployment_name: gpt-4
+    temperature: 0
+    top_p: 1
+    max_tokens: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    answer: ${inputs.answer}
+    context: ${inputs.context}
+    question: ${inputs.question}
+  connection: ptupaygobenchmarkingaoai
+  api: chat
+  activate:
+    when: ${validate_input.output.gpt_relevance}
+    is: true
+  use_variants: false
+- name: gpt_fluency
+  type: llm
+  source:
+    type: code
+    path: fluency_prompt.jinja2
+  inputs:
+    deployment_name: gpt-4
+    temperature: 0
+    top_p: 1
+    max_tokens: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    answer: ${inputs.answer}
+    question: ${inputs.question}
+  connection: ptupaygobenchmarkingaoai
+  api: chat
+  activate:
+    when: ${validate_input.output.gpt_fluency}
+    is: true
+  use_variants: false
+- name: f1_score
+  type: python
+  source:
+    type: code
+    path: f1_score.py
+  inputs:
+    answer: ${inputs.answer}
+    ground_truth: ${inputs.ground_truth}
+  activate:
+    when: ${validate_input.output.f1_score}
+    is: true
+  use_variants: false
+- name: gpt_groundedness
+  type: llm
+  source:
+    type: code
+    path: gpt_groundedness_prompt.jinja2
+  inputs:
+    deployment_name: gpt-4
+    temperature: 0
+    top_p: 1
+    max_tokens: 1
+    presence_penalty: 0
+    frequency_penalty: 0
+    answer: ${inputs.answer}
+    context: ${inputs.context}
+  connection: ptupaygobenchmarkingaoai
+  api: chat
+  activate:
+    when: ${validate_input.output.gpt_groundedness}
+    is: true
+  use_variants: false
+- name: aggregate_variants_results
+  type: python
+  source:
+    type: code
+    path: aggregate_variants_results.py
+  inputs:
+    metrics: ${inputs.metrics}
+    results: ${concat_scores.output}
+  aggregation: true
+  use_variants: false
+- name: select_metrics
+  type: python
+  source:
+    type: code
+    path: select_metrics.py
+  inputs:
+    metrics: ${inputs.metrics}
+  use_variants: false
+- name: embeded_ground_truth
+  type: python
+  source:
+    type: package
+    tool: promptflow.tools.embedding.embedding
+  inputs:
+    connection: ptupaygobenchmarkingaoai
+    deployment_name: text-embedding-ada-002
+    input: ${inputs.ground_truth}
+  activate:
+    when: ${validate_input.output.ada_similarity}
+    is: true
+  use_variants: false
+- name: embeded_answer
+  type: python
+  source:
+    type: package
+    tool: promptflow.tools.embedding.embedding
+  inputs:
+    connection: ptupaygobenchmarkingaoai
+    deployment_name: text-embedding-ada-002
+    input: ${inputs.answer}
+  activate:
+    when: ${validate_input.output.ada_similarity}
+    is: true
+  use_variants: false
+- name: ada_similarity
+  type: python
+  source:
+    type: code
+    path: ada_cosine_similarity_score.py
+  inputs:
+    a: ${embeded_ground_truth.output}
+    b: ${embeded_answer.output}
+  activate:
+    when: ${validate_input.output.ada_similarity}
+    is: true
+  use_variants: false
+- name: validate_input
+  type: python
+  source:
+    type: code
+    path: validate_input.py
+  inputs:
+    answer: ${inputs.answer}
+    context: ${inputs.context}
+    ground_truth: ${inputs.ground_truth}
+    question: ${inputs.question}
+    selected_metrics: ${select_metrics.output}
+  use_variants: false
+- name: analytical_retrieval
+  type: python
+  source:
+    type: code
+    path: binary_retrieval_metric.py
+  inputs:
+    ground_truth_context: ${inputs.groundtruthcontext}
+    retrievedcontext: ${inputs.context}
+  use_variants: false
+- name: gpt_retrieval2
+  type: llm
+  source:
+    type: code
+    path: gpt_retrieval2.jinja2
+  inputs:
+    deployment_name: gpt-4
+    temperature: 1
+    top_p: 1
+    max_tokens: 500
+    presence_penalty: 0
+    frequency_penalty: 0
+    question: ${inputs.question}
+    context: ${inputs.context}
+  connection: ptupaygobenchmarkingaoai
+  api: chat
+  use_variants: false

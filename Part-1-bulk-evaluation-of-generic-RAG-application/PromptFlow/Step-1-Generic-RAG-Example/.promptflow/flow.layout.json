@@ -1,0 +1,67 @@
+{
+  "orientation": "Vertical",
+  "nodeLayouts": {
+    "inputs": {
+      "x": 183,
+      "y": 62,
+      "index": -1
+    },
+    "outputs": {
+      "x": 126,
+      "y": 832,
+      "index": -1
+    },
+    "DetermineIntent": {
+      "x": 12,
+      "y": 172,
+      "height": 75,
+      "index": 0
+    },
+    "ExtractIntent": {
+      "x": 69,
+      "y": 282,
+      "height": 75,
+      "index": 1
+    },
+    "RetrieveDocuments": {
+      "x": 128,
+      "y": 392,
+      "height": 75,
+      "index": 2
+    },
+    "FormatRetrievedDocuments": {
+      "x": 128,
+      "y": 502,
+      "height": 75,
+      "index": 3
+    },
+    "FormatConversation": {
+      "x": 419,
+      "y": 282,
+      "height": 75,
+      "index": 4
+    },
+    "DetermineReply": {
+      "x": 128,
+      "y": 612,
+      "height": 75,
+      "index": 5
+    },
+    "FormatReply": {
+      "x": 128,
+      "y": 722,
+      "height": 75,
+      "index": 6
+    }
+  },
+  "viewport": {
+    "transformMatrix": [
+      1,
+      0,
+      0,
+      1,
+      377.890625,
+      464
+    ]
+  }
+}

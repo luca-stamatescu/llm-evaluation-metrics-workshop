@@ -14,7 +14,11 @@
     },
     "validate_input": {
       "variant_0": {
-        "inputs": {},
+        "inputs": {
+          "groundtruthcontext": [],
+          "selected_tool": [],
+          "selected_tool_ground_truth": []
+        },
         "inputsValue": {}
       }
     },
@@ -50,7 +54,11 @@
     },
     "concat_scores": {
       "variant_0": {
-        "inputs": {},
+        "inputs": {
+          "gpt_retrieval": [],
+          "analytical_retrieval": [],
+          "analytical_tool_selection": []
+        },
         "inputsValue": {}
       }
     },
@@ -60,7 +68,7 @@
         "inputsValue": {}
       }
     },
-    "gpt_retrieval2": {
+    "gpt_retrieval": {
       "variant_0": {
         "inputs": {},
         "inputsValue": {}
@@ -94,6 +102,14 @@
       "variant_0": {
         "inputs": {},
         "inputsValue": {}
+      }
+    },
+    "analytical_tool_selection": {
+      "variant_0": {
+        "inputs": {
+          "selected_tool": [],
+          "selected_tool_ground_truth": []
+        }
       }
     }
   }

@@ -2,12 +2,12 @@
   "orientation": "Vertical",
   "nodeLayouts": {
     "inputs": {
-      "x": 1562.5,
+      "x": 1980,
       "y": 42,
       "index": -1
     },
     "outputs": {
-      "x": 3152.5,
+      "x": 2230,
       "y": 846,
       "index": -1
     },
@@ -18,7 +18,7 @@
       "index": 0
     },
     "concat_scores": {
-      "x": 1742.5,
+      "x": 2140,
       "y": 712,
       "height": 75,
       "index": 1
@@ -36,7 +36,7 @@
       "index": 3
     },
     "gpt_fluency": {
-      "x": 1742.5,
+      "x": 1645,
       "y": 444,
       "height": 75,
       "index": 4
@@ -48,7 +48,7 @@
       "index": 5
     },
     "gpt_groundedness": {
-      "x": 2072.5,
+      "x": 1975,
       "y": 444,
       "height": 75,
       "index": 6
@@ -60,7 +60,7 @@
       "index": 7
     },
     "select_metrics": {
-      "x": 1490,
+      "x": 2150,
       "y": 176,
       "height": 75,
       "index": 8
@@ -84,20 +84,25 @@
       "index": 11
     },
     "validate_input": {
-      "x": 1402.5,
+      "x": 2062.5,
       "y": 310,
       "height": 75,
       "index": 12
     },
     "analytical_retrieval": {
-      "x": 3237.5,
-      "y": 712,
+      "x": 3392.5,
+      "y": 444,
       "height": 75,
       "index": 13
     },
-    "gpt_retrieval2": {
-      "x": 2907.5,
-      "y": 712,
+    "gpt_retrieval": {
+      "x": 3062.5,
+      "y": 444,
+      "index": 15
+    },
+    "analytical_tool_selection": {
+      "x": 3722.5,
+      "y": 444,
       "index": 14
     }
   },

@@ -1,11 +1,12 @@
 {
-  "gpt_retrieval": "1",
-  "gpt_coherence": 5.0,
-  "ada_similarity": NaN,
+  "gpt_retrieval": 1.0,
+  "gpt_coherence": 4.0,
+  "ada_similarity": 0.894,
   "gpt_relevance": 2.0,
-  "analytical_retrieval": 1,
-  "gpt_groundedness": 5.0,
+  "analytical_retrieval": 1.0,
+  "gpt_groundedness": 3.0,
   "gpt_similarity": 2.0,
-  "gpt_fluency": 5.0,
-  "f1_score": 0.14285714285714285
+  "gpt_fluency": 4.0,
+  "f1_score": 0.143,
+  "analytical_tool_selection": 1.0
 }

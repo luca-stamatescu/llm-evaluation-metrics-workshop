@@ -139,6 +139,21 @@
             "double"
           ]
         },
+        "gpt_retrieval": {
+          "type": [
+            "string"
+          ]
+        },
+        "analytical_retrieval": {
+          "type": [
+            "double"
+          ]
+        },
+        "analytical_tool_selection": {
+          "type": [
+            "double"
+          ]
+        },
         "ada_cosine_similarity": {
           "type": [
             "double"
@@ -241,6 +256,21 @@
           "type": [
             "object"
           ]
+        },
+        "groundtruthcontext": {
+          "type": [
+            "string"
+          ]
+        },
+        "selected_tool": {
+          "type": [
+            "string"
+          ]
+        },
+        "selected_tool_ground_truth": {
+          "type": [
+            "string"
+          ]
         }
       },
       "source": "validate_input.py",
@@ -329,6 +359,23 @@
       },
       "source": "binary_retrieval_metric.py",
       "function": "is_groundtruthcontext_in_retrievedcontext"
+    },
+    "analytical_tool_selection.py": {
+      "type": "python",
+      "inputs": {
+        "selected_tool": {
+          "type": [
+            "string"
+          ]
+        },
+        "selected_tool_ground_truth": {
+          "type": [
+            "string"
+          ]
+        }
+      },
+      "source": "analytical_tool_selection.py",
+      "function": "tool_selection_validation"
     }
   }
 }

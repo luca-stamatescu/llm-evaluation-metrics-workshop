@@ -162,17 +162,23 @@ inputs:
     is_chat_input: false
   metrics:
     type: string
-    default: gpt_groundedness,f1_score,gpt_fluency,gpt_coherence,gpt_similarity,gpt_relevance
+    default: gpt_groundedness,f1_score,gpt_fluency,gpt_coherence,gpt_similarity,gpt_relevance,gpt_retrieval,ada_similarity,analytical_retrieval,analytical_tool_selection
     is_chat_input: false
   groundtruthcontext:
     type: string
     is_chat_input: false
     default: prompts and generations are not used to train, retrain, or improve
       the\n\nbase models.
+  selected_tool:
+    type: string
+    default: AzureOpenAIKnowledgeBase
+  selected_tool_ground_truth:
+    type: string
+    default: AzureOpenAIKnowledgeBase
 outputs:
   gpt_retrieval:
     type: string
-    reference: ${gpt_retrieval2.output}
+    reference: ${concat_scores.output.gpt_retrieval}
   gpt_coherence:
     type: string
     reference: ${concat_scores.output.gpt_coherence}
@@ -184,7 +190,7 @@ outputs:
     reference: ${concat_scores.output.gpt_relevance}
   analytical_retrieval:
     type: string
-    reference: ${analytical_retrieval.output}
+    reference: ${concat_scores.output.analytical_retrieval}
   gpt_groundedness:
     type: string
     reference: ${concat_scores.output.gpt_groundedness}
@@ -197,6 +203,9 @@ outputs:
   f1_score:
     type: string
     reference: ${concat_scores.output.f1_score}
+  analytical_tool_selection:
+    type: string
+    reference: ${concat_scores.output.analytical_tool_selection}
 nodes:
 - name: gpt_coherence
   type: llm
@@ -204,15 +213,15 @@ nodes:
     type: code
     path: coherence_score.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt-4o
     temperature: 0
     top_p: 1
-    max_tokens: 1
+    max_tokens: 20
     presence_penalty: 0
     frequency_penalty: 0
     question: ${inputs.question}
     answer: ${inputs.answer}
-  connection: ptupaygobenchmarkingaoai
+  connection: eastusgpt4o
   api: chat
   activate:
     when: ${validate_input.output.gpt_coherence}
@@ -231,6 +240,9 @@ nodes:
     gpt_groundedness_score: ${gpt_groundedness.output}
     gpt_relevance_score: ${gpt_relevance.output}
     gpt_similarity_score: ${gpt_similarity.output}
+    gpt_retrieval: ${gpt_retrieval.output}
+    analytical_retrieval: ${analytical_retrieval.output}
+    analytical_tool_selection: ${analytical_tool_selection.output}
   use_variants: false
 - name: gpt_similarity
   type: llm
@@ -238,16 +250,16 @@ nodes:
     type: code
     path: gpt_similarity_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt-4o
     temperature: 0
     top_p: 1
-    max_tokens: 1
+    max_tokens: 20
     presence_penalty: 0
     frequency_penalty: 0
     answer: ${inputs.answer}
     ground_truth: ${inputs.ground_truth}
     question: ${inputs.question}
-  connection: ptupaygobenchmarkingaoai
+  connection: eastusgpt4o
   api: chat
   activate:
     when: ${validate_input.output.gpt_similarity}
@@ -259,16 +271,16 @@ nodes:
     type: code
     path: gpt_relevance_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt-4o
     temperature: 0
     top_p: 1
-    max_tokens: 1
+    max_tokens: 20
     presence_penalty: 0
     frequency_penalty: 0
     answer: ${inputs.answer}
     context: ${inputs.context}
     question: ${inputs.question}
-  connection: ptupaygobenchmarkingaoai
+  connection: eastusgpt4o
   api: chat
   activate:
     when: ${validate_input.output.gpt_relevance}
@@ -280,15 +292,15 @@ nodes:
     type: code
     path: fluency_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt-4o
     temperature: 0
     top_p: 1
-    max_tokens: 1
+    max_tokens: 20
     presence_penalty: 0
     frequency_penalty: 0
     answer: ${inputs.answer}
     question: ${inputs.question}
-  connection: ptupaygobenchmarkingaoai
+  connection: eastusgpt4o
   api: chat
   activate:
     when: ${validate_input.output.gpt_fluency}
@@ -312,15 +324,15 @@ nodes:
     type: code
     path: gpt_groundedness_prompt.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt-4o
     temperature: 0
     top_p: 1
-    max_tokens: 1
+    max_tokens: 20
     presence_penalty: 0
     frequency_penalty: 0
     answer: ${inputs.answer}
     context: ${inputs.context}
-  connection: ptupaygobenchmarkingaoai
+  connection: eastusgpt4o
   api: chat
   activate:
     when: ${validate_input.output.gpt_groundedness}
@@ -393,6 +405,9 @@ nodes:
     ground_truth: ${inputs.ground_truth}
     question: ${inputs.question}
     selected_metrics: ${select_metrics.output}
+    groundtruthcontext: ${inputs.groundtruthcontext}
+    selected_tool: ${inputs.selected_tool}
+    selected_tool_ground_truth: ${inputs.selected_tool_ground_truth}
   use_variants: false
 - name: analytical_retrieval
   type: python
@@ -403,20 +418,37 @@ nodes:
     ground_truth_context: ${inputs.groundtruthcontext}
     retrievedcontext: ${inputs.context}
   use_variants: false
-- name: gpt_retrieval2
+  activate:
+    when: ${validate_input.output.analytical_retrieval}
+    is: true
+- name: analytical_tool_selection
+  type: python
+  source:
+    type: code
+    path: analytical_tool_selection.py
+  inputs:
+    selected_tool: ${inputs.selected_tool}
+    selected_tool_ground_truth: ${inputs.selected_tool_ground_truth}
+  activate:
+    when: ${validate_input.output.analytical_tool_selection}
+    is: true
+- name: gpt_retrieval
   type: llm
   source:
     type: code
     path: gpt_retrieval2.jinja2
   inputs:
-    deployment_name: gpt-4
+    deployment_name: gpt-4o
     temperature: 1
     top_p: 1
-    max_tokens: 500
+    max_tokens: 20
     presence_penalty: 0
     frequency_penalty: 0
     question: ${inputs.question}
     context: ${inputs.context}
-  connection: ptupaygobenchmarkingaoai
+  connection: eastusgpt4o
   api: chat
   use_variants: false
+  activate:
+    when: ${validate_input.output.gpt_retrieval}
+    is: true

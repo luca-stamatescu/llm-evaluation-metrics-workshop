@@ -10,6 +10,9 @@ def concat_results(gpt_coherence_score: str = None,
                    gpt_relevance_score: str = None,
                    gpt_groundedness_score: str = None,
                    f1_score: float = None,
+                   gpt_retrieval: str = None,
+                   analytical_retrieval: float = None,
+                   analytical_tool_selection: float = None,
                    ada_cosine_similarity: float = None):
 
     load_list = [{'name': 'gpt_coherence', 'score': gpt_coherence_score},
@@ -18,9 +21,12 @@ def concat_results(gpt_coherence_score: str = None,
                  {'name': 'gpt_relevance', 'score': gpt_relevance_score},
                  {'name': 'gpt_groundedness', 'score': gpt_groundedness_score},
                  {'name': 'f1_score', 'score': f1_score},
+                 {'name': 'gpt_retrieval', 'score': gpt_retrieval},
+                 {'name': 'analytical_retrieval', 'score': analytical_retrieval},
+                 {'name': 'analytical_tool_selection', 'score': analytical_tool_selection},
                  {'name': 'ada_similarity', 'score': ada_cosine_similarity}]
 
-    scalar_metrics = ["f1_score", "ada_similarity"]
+    scalar_metrics = ["f1_score", "ada_similarity","analytical_retrieval","analytical_tool_selection"]
     score_list = []
     errors = []
     for item in load_list:
@@ -32,6 +38,8 @@ def concat_results(gpt_coherence_score: str = None,
                     if match:
                         score = match.group()
                     score = float(score)
+                else:
+                    score = round(float(score),3)
             except Exception as e:
                 score = np.nan
                 errors.append({"name": item["name"], "msg":   str(e), "data": item["score"]})

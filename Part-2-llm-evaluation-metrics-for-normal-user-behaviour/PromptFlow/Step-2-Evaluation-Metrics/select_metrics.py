@@ -4,7 +4,7 @@ from promptflow import tool
 @tool
 def select_metrics(metrics: str) -> str:
     supported_metrics = ('gpt_coherence', 'gpt_similarity', 'gpt_fluency', 'gpt_relevance', 'gpt_groundedness',
-                         'f1_score', 'ada_similarity')
+                         'f1_score','gpt_retrieval','analytical_retrieval','analytical_tool_selection', 'ada_similarity')
     user_selected_metrics = [metric.strip() for metric in metrics.split(',') if metric]
     metric_selection_dict = {}
     for metric in supported_metrics:

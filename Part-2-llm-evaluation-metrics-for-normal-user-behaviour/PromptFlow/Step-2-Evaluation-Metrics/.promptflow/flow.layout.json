@@ -2,53 +2,53 @@
   "orientation": "Vertical",
   "nodeLayouts": {
     "inputs": {
-      "x": 1980,
+      "x": 1960,
       "y": 42,
       "index": -1
     },
     "outputs": {
-      "x": 2230,
+      "x": 1880,
       "y": 846,
       "index": -1
     },
     "gpt_coherence": {
-      "x": 1315,
+      "x": 305,
       "y": 444,
       "height": 75,
       "index": 0
     },
     "concat_scores": {
-      "x": 2140,
+      "x": 1790,
       "y": 712,
       "height": 75,
       "index": 1
     },
     "gpt_similarity": {
-      "x": 2732.5,
+      "x": 635,
       "y": 444,
       "height": 75,
       "index": 2
     },
     "gpt_relevance": {
-      "x": 2402.5,
+      "x": 1295,
       "y": 444,
       "height": 75,
       "index": 3
     },
     "gpt_fluency": {
-      "x": 1645,
+      "x": 965,
       "y": 444,
       "height": 75,
       "index": 4
     },
     "f1_score": {
-      "x": 985,
+      "x": 1955,
       "y": 444,
       "height": 75,
       "index": 5
     },
     "gpt_groundedness": {
-      "x": 1975,
+      "x": 1625,
       "y": 444,
       "height": 75,
       "index": 6
@@ -60,48 +60,48 @@
       "index": 7
     },
     "select_metrics": {
-      "x": 2150,
+      "x": 2130,
       "y": 176,
       "height": 75,
       "index": 8
     },
     "embeded_ground_truth": {
-      "x": 305,
+      "x": 3372.5,
       "y": 444,
       "height": 75,
       "index": 9
     },
     "embeded_answer": {
-      "x": 635,
+      "x": 3702.5,
       "y": 444,
       "height": 75,
       "index": 10
     },
     "ada_similarity": {
-      "x": 635,
+      "x": 3692.5,
       "y": 578,
       "height": 75,
       "index": 11
     },
     "validate_input": {
-      "x": 2062.5,
+      "x": 2042.5,
       "y": 310,
       "height": 75,
       "index": 12
     },
     "analytical_retrieval": {
-      "x": 3392.5,
+      "x": 2712.5,
       "y": 444,
       "height": 75,
       "index": 13
     },
     "gpt_retrieval": {
-      "x": 3062.5,
+      "x": 2382.5,
       "y": 444,
       "index": 15
     },
     "analytical_tool_selection": {
-      "x": 3722.5,
+      "x": 3042.5,
       "y": 444,
       "index": 14
     }

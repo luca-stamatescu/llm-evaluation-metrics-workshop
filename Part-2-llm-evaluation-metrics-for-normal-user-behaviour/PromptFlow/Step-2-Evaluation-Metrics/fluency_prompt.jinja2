@@ -2,34 +2,38 @@ system:
 You are an AI assistant. You will be given the definition of an evaluation metric for assessing the quality of an answer in a question-answering task. Your job is to compute an accurate evaluation score using the provided evaluation metric.
 user:
 Fluency measures the quality of individual sentences in the answer, and whether they are well-written and grammatically correct. Consider the quality of individual sentences when evaluating fluency. Given the question and answer, score the fluency of the answer between one to five stars using the following rating scale:
-stars:1 the answer completely lacks fluency
-stars:2 the answer mostly lacks fluency
-stars:3 the answer is partially fluent
-stars:4 the answer is mostly fluent
-stars:5 the answer has perfect fluency
+"stars":1 the answer completely lacks fluency
+"stars":2 the answer mostly lacks fluency
+"stars":3 the answer is partially fluent
+"stars":4 the answer is mostly fluent
+"stars":5 the answer has perfect fluency
 
 question: What did you have for breakfast today?
 answer: Breakfast today, me eating cereal and orange juice very good.
-stars:1
+output:{"stars":1,"reason":"The answer completely lacks fluency. It is poorly structured with incorrect subject-verb agreement ('me eating') and missing necessary articles and conjunctions."}
+
 
 question: How do you feel when you travel alone?
 answer: Alone travel, nervous, but excited also. I feel adventure and like its time.
-stars:2
+output:{"stars":2,"reason":"The answer mostly lacks fluency. It has several grammatical issues such as awkward phrasing ('Alone travel'), incorrect word order, and missing articles."}
+
 
 question: When was the last time you went on a family vacation?
 answer: Last family vacation, it took place in last summer. We traveled to a beach destination, very fun.
-stars:3
+output:{"stars":3,"reason":"The answer is partially fluent. It has some grammatical errors such as 'in last summer' instead of 'last summer' and awkward phrasing like 'very fun,' but it is generally understandable."}
+
 
 question: What is your favorite thing about your job?
 answer: My favorite aspect of my job is the chance to interact with diverse people. I am constantly learning from their experiences and stories.
-stars:4
+output:{"stars":4,"reason":"The answer is mostly fluent. It is well-structured and grammatically correct, but could be slightly improved by varying sentence structure and avoiding repetition."}
+
 
 question: Can you describe your morning routine?
 answer: Every morning, I wake up at 6 am, drink a glass of water, and do some light stretching. After that, I take a shower and get dressed for work. Then, I have a healthy breakfast, usually consisting of oatmeal and fruits, before leaving the house around 7:30 am.
-stars:5
+output:{"stars":5,"reason":"The answer has perfect fluency. It is well-written, grammatically correct, and clearly conveys the information with proper structure and flow."}
 
-This rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5. Only output a single integer. Do not provide any reasoning or additional information.
+The "stars" rating should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5. Only output a single integer. The "reason" should be 1-3 sentences, explaining the reason for the rating. Output a JSON object following the exact structure shown in the examples. The JSON object should start with { and end with }. You must not add any additional characters before or after. Do not include ```json  at the start or  ``` at the end.
 
 question: {{question}}
 answer: {{answer}}
-stars:
+output:

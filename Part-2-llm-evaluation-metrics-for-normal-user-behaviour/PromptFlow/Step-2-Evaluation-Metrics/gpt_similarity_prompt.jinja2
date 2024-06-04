@@ -13,31 +13,31 @@ The examples below show the Equivalence score for a question, a correct answer, 
 question: What is the role of ribosomes?
 correct answer: Ribosomes are cellular structures responsible for protein synthesis. They interpret the genetic information carried by messenger RNA (mRNA) and use it to assemble amino acids into proteins.
 predicted answer: Ribosomes participate in carbohydrate breakdown by removing nutrients from complex sugar molecules.
-stars: 1
+output:{"stars":1,"reason":"The predicted answer is not at all similar to the correct answer. It incorrectly describes the function of ribosomes as being involved in carbohydrate breakdown, which is entirely unrelated to their actual role in protein synthesis."}
 
 question: Why did the Titanic sink?
 correct answer: The Titanic sank after it struck an iceberg during its maiden voyage in 1912. The impact caused the ship's hull to breach, allowing water to flood into the vessel. The ship's design, lifeboat shortage, and lack of timely rescue efforts contributed to the tragic loss of life.
 predicted answer: The sinking of the Titanic was a result of a large iceberg collision. This caused the ship to take on water and eventually sink, leading to the death of many passengers due to a shortage of lifeboats and insufficient rescue attempts.
-stars: 2
+output:{"stars":2,"reason":"The predicted answer is mostly not similar to the correct answer. While it mentions the iceberg collision and lifeboat shortage, it omits important details such as the ship's design flaws and the lack of timely rescue efforts."}
 
 question: What causes seasons on Earth?
 correct answer: Seasons on Earth are caused by the tilt of the Earth's axis and its revolution around the Sun. As the Earth orbits the Sun, the tilt causes different parts of the planet to receive varying amounts of sunlight, resulting in changes in temperature and weather patterns.
 predicted answer: Seasons occur because of the Earth's rotation and its elliptical orbit around the Sun. The tilt of the Earth's axis causes regions to be subjected to different sunlight intensities, which leads to temperature fluctuations and alternating weather conditions.
-stars: 3
+output:{"stars":3,"reason":"The predicted answer is somewhat similar to the correct answer. It correctly mentions the tilt of the Earth's axis and its effect on sunlight intensity, but incorrectly attributes seasons to the Earth's rotation and elliptical orbit, rather than its revolution around the Sun."}
 
 question: How does photosynthesis work?
 correct answer: Photosynthesis is a process by which green plants and some other organisms convert light energy into chemical energy. This occurs as light is absorbed by chlorophyll molecules, and then carbon dioxide and water are converted into glucose and oxygen through a series of reactions.
 predicted answer: In photosynthesis, sunlight is transformed into nutrients by plants and certain microorganisms. Light is captured by chlorophyll molecules, followed by the conversion of carbon dioxide and water into sugar and oxygen through multiple reactions.
-stars: 4
+output:{"stars":4,"reason":"The predicted answer is mostly similar to the correct answer. It accurately describes the role of chlorophyll and the conversion of carbon dioxide and water into sugar and oxygen, but uses slightly different terminology and omits the mention of "chemical energy.""}
 
 question: What are the health benefits of regular exercise?
 correct answer: Regular exercise can help maintain a healthy weight, increase muscle and bone strength, and reduce the risk of chronic diseases. It also promotes mental well-being by reducing stress and improving overall mood.
 predicted answer: Routine physical activity can contribute to maintaining ideal body weight, enhancing muscle and bone strength, and preventing chronic illnesses. In addition, it supports mental health by alleviating stress and augmenting general mood.
-stars: 5
+output:{"stars":5,"reason":"The predicted answer is completely similar to the correct answer. It accurately covers all aspects, including maintaining a healthy weight, enhancing muscle and bone strength, reducing the risk of chronic diseases, and promoting mental well-being."}
 
-This rating value should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5. Only output a single integer. Do not provide any reasoning or additional information.
+The "stars" rating should always be an integer between 1 and 5. So the rating produced should be 1 or 2 or 3 or 4 or 5. Only output a single integer. The "reason" should be 1-3 sentences, explaining the reason for the rating. Output a JSON object following the exact structure shown in the examples. The JSON object should start with { and end with }. You must not add any additional characters before or after. Do not include ```json  at the start or  ``` at the end.
 
 question: {{question}}
 correct answer:{{ground_truth}}
 predicted answer: {{answer}}
-stars:
+output:

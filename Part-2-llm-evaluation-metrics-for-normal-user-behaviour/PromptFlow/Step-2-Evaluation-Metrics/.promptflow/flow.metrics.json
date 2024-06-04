@@ -1,11 +1,11 @@
 {
-  "gpt_coherence": 4.0,
+  "gpt_coherence": 5.0,
   "gpt_similarity": 2.0,
-  "gpt_fluency": 4.0,
+  "gpt_fluency": 5.0,
   "gpt_relevance": 2.0,
-  "gpt_groundedness": 3.0,
+  "gpt_groundedness": 1.0,
   "f1_score": 0.14,
-  "gpt_retrieval": 1.0,
+  "gpt_retrieval": 5.0,
   "analytical_retrieval": 1.0,
   "analytical_tool_selection": 1.0,
   "ada_similarity": 0.89

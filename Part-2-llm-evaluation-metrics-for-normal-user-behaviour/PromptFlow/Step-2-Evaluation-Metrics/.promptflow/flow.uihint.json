@@ -57,7 +57,17 @@
         "inputs": {
           "gpt_retrieval": [],
           "analytical_retrieval": [],
-          "analytical_tool_selection": []
+          "analytical_tool_selection": [],
+          "gpt_coherence_output": [],
+          "gpt_similarity_output": [],
+          "gpt_fluency_output": [],
+          "gpt_relevance_output": [],
+          "gpt_groundedness_output": [],
+          "f1_output": [],
+          "gpt_retrieval_output": [],
+          "analytical_retrieval_output": [],
+          "analytical_tool_selection_output": [],
+          "ada_cosine_similarity_output": []
         },
         "inputsValue": {}
       }
@@ -70,7 +80,9 @@
     },
     "gpt_retrieval": {
       "variant_0": {
-        "inputs": {},
+        "inputs": {
+          "groundtruthcontext": []
+        },
         "inputsValue": {}
       }
     },

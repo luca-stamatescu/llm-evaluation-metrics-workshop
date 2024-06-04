@@ -167,8 +167,7 @@ inputs:
   groundtruthcontext:
     type: string
     is_chat_input: false
-    default: prompts and generations are not used to train, retrain, or improve
-      the\n\nbase models.
+    default: testing an error
   selected_tool:
     type: string
     default: AzureOpenAIKnowledgeBase

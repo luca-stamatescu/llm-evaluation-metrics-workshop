@@ -31,7 +31,7 @@ def concat_results(gpt_coherence_output: str = None,
     score_list = []
     errors = []
     for item in load_list:
-        if item['output']:
+        if 'output' in item:
             try:
                 output = item["output"]
                 if item["name"] not in scalar_metrics:

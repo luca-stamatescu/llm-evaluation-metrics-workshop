@@ -1,0 +1,26 @@
+﻿question,ground_truth,groundtruthcontext,selected_tool_ground_truth
+Does Azure OpenAI use customer data to retrain models?,"No, Azure OpenAI doesn't use customer data to retrain models.","prompts and generations are not used to train, retrain, or improve the\n\nbase models.",AzureOpenAIKnowledgeBase
+Is the latest release of the OpenAI Python library (version>=1.0) supported by Azure OpenAI?,"Yes, Azure OpenAI is supported by the latest release of the OpenAI Python library.",this is the wrong context,AzureOpenAIKnowledgeBase
+Can I find GPT-4 Turbo Preview in Azure OpenAI?,"Yes, GPT-4 Turbo Preview is available in Azure OpenAI.",this is the wrong context,AzureOpenAIKnowledgeBase
+Does Azure OpenAI support GPT-4 models?,"Yes, Azure OpenAI supports the latest GPT-4 models.",Azure OpenAI supports the latest GPT-4 models. It supports both GPT-4 and GPT-4-32K,AzureOpenAIKnowledgeBase
+Are VNETs and Private Endpoints supported by Azure OpenAI?,"Yes, Azure OpenAI supports VNETs and Private Endpoints.",Azure OpenAI supports VNETs and Private Endpoints.,AzureOpenAIKnowledgeBase
+Do the GPT-4 models currently support image input?,"No, currently only text input and output are supported for GPT-4 models.","GPT-4 is designed by OpenAI to be multimodal, but currently only text input and output are supported",AzureOpenAIKnowledgeBase
+Is there a token limit on the system message for Azure OpenAI on your data?,"Yes, the token limit on the system message is 400.",the token limit on the system message is 400,AzureOpenAIKnowledgeBase
+Can I use GPT-4 to generate images?,"No, you cannot use GPT-4 to generate images, but you can use DALL-E models.",you can use dall-e-3 to generate images,AzureOpenAIKnowledgeBase
+What is the maximum number of fine-tuned models I can create?,You can create a maximum of 100 fine-tuned models.,100,AzureOpenAIKnowledgeBase
+Is there a defined API response time SLA for Azure OpenAI?,"No, there is no defined API response time SLA at this time.",We don't have a defined API response time Service Level Agreement (SLA) at this time.,AzureOpenAIKnowledgeBase
+Does Azure OpenAI on your data support function calling?,"No, Azure OpenAI on your data currently doesn't support function calling.",Azure OpenAI on your data currently doesn't support function calling,AzureOpenAIKnowledgeBase
+Is there a limit to the size of the image I can upload?,"Yes, there is a 20MB limit per image upload.","Yes, we restrict image uploads to 20MB per image.",AzureOpenAIKnowledgeBase
+Can I delete an image I uploaded to Azure OpenAI?,"No, Azure OpenAI will automatically delete the image after it has been processed by the model.",we'll delete the image for you automatically after it has been processed by the model,AzureOpenAIKnowledgeBase
+Does Azure OpenAI on your data support vector embeddings when indexing data?,"Yes, you can add vector embeddings when indexing your data.",This will create an Azure AI Search index with vector embeddings,AzureOpenAIKnowledgeBase
+Can I use quotа to increase the max token limit of a model?,"No, the max input token limit of a model is not impacted by changes made to TPM.","No, quota Tokens-Per-Minute (TPM) allocation isn't related to the max input token limit of a model",AzureOpenAIKnowledgeBase
+Can I fine-tune the image capabilities in GPT-4?,"No, fine-tuning the image capabilities of GPT-4 is not supported at this time.",we don't support fine-tuning the image capabilities of GPT-4 at this time,AzureOpenAIKnowledgeBase
+Can I use Azure OpenAI to understand image metadata?,"No, GPT-4 Turbo with Vision does not understand image metadata.","No, the model doesn't receive image metadata",AzureOpenAIKnowledgeBase
+Can I apply for new use cases for Azure OpenAI?,"Yes, customers can apply for new use cases for their service.",This process follows the established Limited Access process within Azure AI services,AzureOpenAIKnowledgeBase
+Is the guest account access issue in Azure OpenAI Studio expected behavior?,"Yes, it is expected behavior and there are steps provided to enable access.",This is expected behavior when using the default sign-in experience,AzureOpenAIKnowledgeBase
+Are the capabilities of Azure OpenAI comparable to OpenAI?,"Yes, Azure OpenAI offers advanced language AI with the security and enterprise promise of Azure.","With Azure OpenAI, customers get the security capabilities of Microsoft Azure while running the same models as OpenAI",AzureOpenAIKnowledgeBase
+How many subscriptions do I currently have?,"You have 3 subscriptions. [Citation: ""subscription_count"":3]",3,Inventory_SQL
+What number of subscriptions do I have right now in Azure?,"You currently have 3 subscriptions in Azure. [Citation: ""subscription_count"":3]",3,Inventory_SQL
+What is my current spend?,"Your current spend is $50.24. [Citation: ""current_spend_in_USD"":""$50.24""]",50.24,Inventory_SQL
+What is my current spend currently in Azure?,"Your spend in Azure is $50.24. [Citation: ""current_spend_in_USD"":""$50.24""]",50.24,Inventory_SQL
+I want to know how many virtual machines I have right now.,"You currently are using 19 virtual machines. [Citation: ""current_vm_count"":19]",19,Inventory_SQL

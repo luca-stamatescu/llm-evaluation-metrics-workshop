@@ -1,0 +1,26 @@
+﻿chat_history,question
+[],Does Azure OpenAI use customer data to retrain models?
+[],Is the latest release of the OpenAI Python library (version>=1.0) supported by Azure OpenAI?
+[],Can I find GPT-4 Turbo Preview in Azure OpenAI?
+[],Does Azure OpenAI support GPT-4 models?
+[],Are VNETs and Private Endpoints supported by Azure OpenAI?
+[],Do the GPT-4 models currently support image input?
+[],Is there a token limit on the system message for Azure OpenAI on your data?
+[],Can I use GPT-4 to generate images?
+[],What is the maximum number of fine-tuned models I can create?
+[],Is there a defined API response time SLA for Azure OpenAI?
+[],Does Azure OpenAI on your data support function calling?
+[],Is there a limit to the size of the image I can upload?
+[],Can I delete an image I uploaded to Azure OpenAI?
+[],Does Azure OpenAI on your data support vector embeddings when indexing data?
+[],Can I use quotа to increase the max token limit of a model?
+[],Can I fine-tune the image capabilities in GPT-4?
+[],Can I use Azure OpenAI to understand image metadata?
+[],Can I apply for new use cases for Azure OpenAI?
+[],Is the guest account access issue in Azure OpenAI Studio expected behavior?
+[],Are the capabilities of Azure OpenAI comparable to OpenAI?
+[],How many subscriptions do I currently have?
+[],What number of subscriptions do I have right now in Azure?
+[],What is my current spend?
+[],What is my current spend currently in Azure?
+[],I want to know how many virtual machines I have right now.

@@ -1,0 +1,97 @@
+{
+  "orientation": "Vertical",
+  "nodeLayouts": {
+    "inputs": {
+      "x": 882.5,
+      "y": 42,
+      "index": -1
+    },
+    "outputs": {
+      "x": 1630,
+      "y": 980,
+      "index": -1
+    },
+    "DetermineIntent": {
+      "x": 442.5,
+      "y": 176,
+      "height": 75,
+      "index": 0
+    },
+    "ExtractIntent": {
+      "x": 1005,
+      "y": 310,
+      "height": 75,
+      "index": 1
+    },
+    "RetrieveDocuments": {
+      "x": 490,
+      "y": 444,
+      "height": 75,
+      "index": -1
+    },
+    "FormatRetrievedDocuments": {
+      "x": 490,
+      "y": 578,
+      "height": 75,
+      "index": -1
+    },
+    "FormatConversation": {
+      "x": 345,
+      "y": 444,
+      "height": 75,
+      "index": 3
+    },
+    "DetermineReply": {
+      "x": 227.5,
+      "y": 712,
+      "height": 75,
+      "index": -1
+    },
+    "FormatReply": {
+      "x": 227.5,
+      "y": 846,
+      "height": 75,
+      "index": -1
+    },
+    "Dummy_Knowledgebase": {
+      "x": 762.5,
+      "y": 578,
+      "index": 2
+    },
+    "DetermineReplyKnowledgeBase": {
+      "x": 140,
+      "y": 712,
+      "index": 4
+    },
+    "CombineRoutesAndFormat": {
+      "x": 1415,
+      "y": 846,
+      "index": 5
+    },
+    "Dummy_SQL_Inventory": {
+      "x": 1287.5,
+      "y": 444,
+      "index": 6
+    },
+    "DetermineReplySQL": {
+      "x": 1092.5,
+      "y": 578,
+      "index": 7
+    },
+    "Embed_Query": {
+      "x": 675,
+      "y": 444,
+      "index": 8
+    }
+  },
+  "viewport": {
+    "transformMatrix": [
+      1,
+      0,
+      0,
+      1,
+      377.890625,
+      464
+    ]
+  }
+}

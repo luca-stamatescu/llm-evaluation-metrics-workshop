@@ -1,0 +1,156 @@
+id: template_chat_flow
+name: Template Chat Flow
+inputs:
+  chat_history:
+    type: list
+    default: []
+    is_chat_input: false
+  question:
+    type: string
+    default: what auzre openai models are there
+    is_chat_input: true
+outputs:
+  agent_reply:
+    type: string
+    reference: ${CombineRoutesAndFormat.output.agent_reply}
+    is_chat_output: true
+  selected_tool:
+    type: string
+    reference: ${ExtractIntent.output.tool}
+  retrieved_context:
+    type: string
+    reference: ${CombineRoutesAndFormat.output.context}
+nodes:
+- name: DetermineIntent
+  type: llm
+  source:
+    type: code
+    path: DetermineIntent.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    top_p: 1
+    max_tokens: 800
+    presence_penalty: 0
+    frequency_penalty: 0
+    query: ${inputs.question}
+    chat_history: ${inputs.chat_history}
+  provider: AzureOpenAI
+  connection: benchmarking2eastus
+  api: chat
+  module: promptflow.tools.aoai
+  use_variants: false
+- name: ExtractIntent
+  type: python
+  source:
+    type: code
+    path: ExtractIntent.py
+  inputs:
+    input: ${DetermineIntent.output}
+    query: ${inputs.question}
+  use_variants: false
+- name: Dummy_Knowledgebase
+  type: python
+  source:
+    type: code
+    path: FormatRetrievedDocuments.py
+  inputs:
+    embedded_user_query: ${Embed_Query.output}
+    user_query: ${ExtractIntent.output.current_message_intent}
+  activate:
+    when: ${ExtractIntent.output.tool}
+    is: AzureOpenAIKnowledgeBase
+  use_variants: false
+- name: FormatConversation
+  type: python
+  source:
+    type: code
+    path: FormatConversation.py
+  inputs:
+    history: ${inputs.chat_history}
+    maxTokens: 800
+  activate:
+    when: ${ExtractIntent.output.tool}
+    is: AzureOpenAIKnowledgeBase
+  use_variants: false
+- name: DetermineReplyKnowledgeBase
+  type: llm
+  source:
+    type: code
+    path: DetermineReply.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    top_p: 1
+    max_tokens: 800
+    presence_penalty: 0
+    frequency_penalty: 0
+    conversation: ${FormatConversation.output}
+    documentation: ${Dummy_Knowledgebase.output}
+    user_query: ${ExtractIntent.output.current_message_intent}
+  provider: AzureOpenAI
+  connection: benchmarking2eastus
+  api: chat
+  module: promptflow.tools.aoai
+  activate:
+    when: ${ExtractIntent.output.tool}
+    is: AzureOpenAIKnowledgeBase
+  use_variants: false
+- name: CombineRoutesAndFormat
+  type: python
+  source:
+    type: code
+    path: FormatReply.py
+  inputs:
+    knowledgebase_reply: ${DetermineReplyKnowledgeBase.output}
+    sql_reply: ${DetermineReplySQL.output}
+    selected_tool: ${ExtractIntent.output.tool}
+    knowledge_base_context: ${Dummy_Knowledgebase.output}
+    sql_context: ${Dummy_SQL_Inventory.output}
+  use_variants: false
+- name: Dummy_SQL_Inventory
+  type: python
+  source:
+    type: code
+    path: Dummy_SQL_Inventory.py
+  inputs: {}
+  activate:
+    when: ${ExtractIntent.output.tool}
+    is: Inventory_SQL
+  use_variants: false
+- name: DetermineReplySQL
+  type: llm
+  source:
+    type: code
+    path: DetermineReplySQL.jinja2
+  inputs:
+    deployment_name: gpt-4o
+    temperature: 0
+    top_p: 1
+    max_tokens: 800
+    presence_penalty: 0
+    frequency_penalty: 0
+    conversation: ${FormatConversation.output}
+    sql_data: ${Dummy_SQL_Inventory.output}
+    user_query: ${ExtractIntent.output.current_message_intent}
+  provider: AzureOpenAI
+  connection: benchmarking2eastus
+  api: chat
+  module: promptflow.tools.aoai
+  activate:
+    when: ${ExtractIntent.output.tool}
+    is: Inventory_SQL
+  use_variants: false
+- name: Embed_Query
+  type: python
+  source:
+    type: package
+    tool: promptflow.tools.embedding.embedding
+  inputs:
+    connection: benchmarking2eastus
+    deployment_name: text-embedding-ada-002
+    input: ${ExtractIntent.output.current_message_intent}
+  use_variants: false
+node_variants: {}
+environment:
+  python_requirements_txt: requirements.txt

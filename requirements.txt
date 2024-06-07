@@ -1,3 +1,4 @@
 promptflow
 promptflow-tools
 scikit-learn
+numpy

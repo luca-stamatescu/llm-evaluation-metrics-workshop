@@ -14,8 +14,8 @@ The following resources are required to complete this workshop:
 
 There are two pathways to complete this workshop.
 
-1) If you do not have your own existing GenAI application, and are looking to learn more about LLM Evaluation, start at Part-2.1-collecting-ground-truth-labels. You will start from the very beginning, and leverage an included, simple RAG application to generate your dataset.
-2) If you already have an existing GenAI application, and wish to leverage your own dataset, skip to Part-2.3-building-an-evaluation-dataset. You may wish to review Part-2.1 and Part-2.2 to understand how the dataset inputs are collected.
+1) If you do not have your own existing GenAI application, and are looking to learn more about LLM Evaluation, start at _Part-2.1-collecting-ground-truth-labels_. You will start from the very beginning, and leverage an included, simple RAG application to generate your dataset.
+2) If you already have an existing GenAI application, and wish to leverage your own dataset, skip to _Part-2.3-building-an-evaluation-dataset_. You may wish to review Part-2.1 and Part-2.2 to understand how the dataset inputs are collected.
 
 For both pathways, you are encouraged to review the optional material in Part-1.
 
@@ -23,12 +23,22 @@ For both pathways, you are encouraged to review the optional material in Part-1.
 
 An overview of the LLM evaluation process is included, to help explain the key concepts and underlying theory.
 
-## Part 1 - (Optional) Generating artefacts for evaluation
+## Part 2 - Build an evaluation dataset
 
-This step is optional, in order to create a dataset for evaluation which contains all the logged artefacts that are needed.
+Learn how an evaluation dataset is constructed, and build your own leveraging a provided RAG application. Alternatively, bring your own dataset created from your own GenAI application.
 
-If you have an existing GenAI application, you should set up logging to create a dataset following the same structure as Step-2-Input-Dataset.
+## Part 3 - Out-of-the-Box evaluation with Azure AI Studio
 
-## Part 2 - Evaluation
+Leverage Azure AI Studio's powerful LLM evaluation capabilities
 
-In this step, Prompt Flow is used to evaluate the GenAI application.
+## Part 4 - Build custom evaluation metrics with PromptFlow and Azure AI Studio
+
+Go further, and build advanced LLM evaluation metrics for your application.
+
+
+## Future work
+The following topics are not covered in this tutorial.
+
+- CICD: how to implement a code first approach to leveraging Azure AI Studio.
+- Few shot prompting: Customize the evaluation metrics with few shot prompts tailored to your use case.
+- Other scenarios: testing for other harms or failure scenarios such as offensive content, jailbreaking attacks or unexpected inputs.

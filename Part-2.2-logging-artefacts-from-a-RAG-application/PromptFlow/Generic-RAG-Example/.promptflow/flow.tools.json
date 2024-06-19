@@ -54,8 +54,7 @@
         }
       },
       "package": "promptflow-tools",
-      "package_version": "1.4.0",
-      "toolId": "promptflow.tools.embedding.embedding"
+      "package_version": "1.4.0"
     }
   },
   "code": {
@@ -73,9 +72,7 @@
           ]
         }
       },
-      "source": "DetermineIntent.jinja2",
-      "name": "DetermineIntent.jinja2",
-      "toolId": "DetermineIntent.jinja2"
+      "source": "DetermineIntent.jinja2"
     },
     "ExtractIntent.py": {
       "type": "python",
@@ -92,9 +89,7 @@
         }
       },
       "source": "ExtractIntent.py",
-      "function": "extract_intent",
-      "name": "ExtractIntent.py",
-      "toolId": "ExtractIntent.py"
+      "function": "extract_intent"
     },
     "FormatRetrievedDocuments.py": {
       "type": "python",
@@ -128,9 +123,7 @@
         }
       },
       "source": "FormatConversation.py",
-      "function": "format_conversation",
-      "name": "FormatConversation.py",
-      "toolId": "FormatConversation.py"
+      "function": "format_conversation"
     },
     "DetermineReply.jinja2": {
       "type": "llm",
@@ -151,9 +144,7 @@
           ]
         }
       },
-      "source": "DetermineReply.jinja2",
-      "name": "DetermineReply.jinja2",
-      "toolId": "DetermineReply.jinja2"
+      "source": "DetermineReply.jinja2"
     },
     "FormatReply.py": {
       "type": "python",
@@ -185,16 +176,12 @@
         }
       },
       "source": "FormatReply.py",
-      "function": "format_reply",
-      "name": "FormatReply.py",
-      "toolId": "FormatReply.py"
+      "function": "format_reply"
     },
     "Dummy_SQL_Inventory.py": {
       "type": "python",
       "source": "Dummy_SQL_Inventory.py",
-      "function": "my_python_tool",
-      "name": "Dummy_SQL_Inventory.py",
-      "toolId": "Dummy_SQL_Inventory.py"
+      "function": "my_python_tool"
     },
     "DetermineReplySQL.jinja2": {
       "type": "llm",
@@ -215,9 +202,7 @@
           ]
         }
       },
-      "source": "DetermineReplySQL.jinja2",
-      "name": "DetermineReplySQL.jinja2",
-      "toolId": "DetermineReplySQL.jinja2"
+      "source": "DetermineReplySQL.jinja2"
     }
   }
 }

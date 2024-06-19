@@ -220,7 +220,7 @@ nodes:
     frequency_penalty: 0
     question: ${inputs.question}
     answer: ${inputs.answer}
-  connection: eastusgpt4o
+  connection: benchmarking2eastus
   api: chat
   activate:
     when: ${validate_input.output.gpt_coherence}
@@ -258,7 +258,7 @@ nodes:
     answer: ${inputs.answer}
     ground_truth: ${inputs.ground_truth}
     question: ${inputs.question}
-  connection: eastusgpt4o
+  connection: benchmarking2eastus
   api: chat
   activate:
     when: ${validate_input.output.gpt_similarity}
@@ -279,7 +279,7 @@ nodes:
     answer: ${inputs.answer}
     context: ${inputs.context}
     question: ${inputs.question}
-  connection: eastusgpt4o
+  connection: benchmarking2eastus
   api: chat
   activate:
     when: ${validate_input.output.gpt_relevance}
@@ -299,7 +299,7 @@ nodes:
     frequency_penalty: 0
     answer: ${inputs.answer}
     question: ${inputs.question}
-  connection: eastusgpt4o
+  connection: benchmarking2eastus
   api: chat
   activate:
     when: ${validate_input.output.gpt_fluency}
@@ -331,7 +331,7 @@ nodes:
     frequency_penalty: 0
     answer: ${inputs.answer}
     context: ${inputs.context}
-  connection: eastusgpt4o
+  connection: benchmarking2eastus
   api: chat
   activate:
     when: ${validate_input.output.gpt_groundedness}
@@ -361,7 +361,7 @@ nodes:
     type: package
     tool: promptflow.tools.embedding.embedding
   inputs:
-    connection: ptupaygobenchmarkingaoai
+    connection: benchmarking2eastus
     deployment_name: text-embedding-ada-002
     input: ${inputs.ground_truth}
   activate:
@@ -374,7 +374,7 @@ nodes:
     type: package
     tool: promptflow.tools.embedding.embedding
   inputs:
-    connection: ptupaygobenchmarkingaoai
+    connection: benchmarking2eastus
     deployment_name: text-embedding-ada-002
     input: ${inputs.answer}
   activate:
@@ -445,7 +445,7 @@ nodes:
     frequency_penalty: 0
     context: ${inputs.context}
     groundtruthcontext: ${inputs.groundtruthcontext}
-  connection: eastusgpt4o
+  connection: benchmarking2eastus
   api: chat
   use_variants: false
   activate:

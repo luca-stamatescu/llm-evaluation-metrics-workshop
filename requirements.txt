@@ -1,4 +1,7 @@
 promptflow
 promptflow-tools
+promptflow-azure
 scikit-learn
 numpy
+jupyterlab
+python-dotenv

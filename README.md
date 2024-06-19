@@ -1,6 +1,10 @@
-# llm-evaluation-metrics-workshop
+# LLM Evaluation Metrics Workshop
 
-Azure AI Studio contains a powerful set of tools and capabilities for evaluating the performance of GenAI applications. This repository provides a simple, worked example to help translate theory into practice. This repository can be used as a template to build your own evaluation flows on top of.
+Evaluating the performance of Generative AI applications is difficult, as it is often easy to evaluate the correctness of a response. During development, how do you know that the tweaks made to your prompt actually improved performance across all scenarios? When in production, how can you switch to the latest LLM model with confidence, knowing that your application won't break? And how can you monitor performance of your system over time, as data in your knowledge base continues to be updated an evolve?
+
+Azure AI Studio, coupled with PromptFlow, provides a powerful set of tools and capabilities for evaluating the performance of GenAI applications, to let you deploy with confidence.
+
+This repository provides a simple, worked examples to help translate theory into practice. In this workshop, you will start at the very beginning, and build up to a working, end-to-end evaluation flow.
 
 ##  Preparation
 
@@ -29,16 +33,23 @@ Learn how an evaluation dataset is constructed, and build your own leveraging a 
 
 ## Part 3 - Out-of-the-Box evaluation with Azure AI Studio
 
-Leverage Azure AI Studio's powerful LLM evaluation capabilities
+Leverage Azure AI Studio's powerful LLM evaluation capabilities to evaluate your GenAI application.
 
 ## Part 4 - Build custom evaluation metrics with PromptFlow and Azure AI Studio
 
-Go further, and build advanced LLM evaluation metrics for your application.
+Go further, and build advanced LLM evaluation metrics for your application. Learn how to develop new metrics for your application, or tune the existing metrics through few-shot prompting to your specific scenario.
 
+## Part 5 - Integrate CICD and local development to the cloud to track metrics over time 
+
+Move beyond using the web browser, and integrate your metrics into your development pipeline. This allows teams to run experiments, and track their results in a common platform. It also allows evaluations to be run as part of each deployment- if the application performs below a certain threshold, then it can prevent deployment and refer it for further review.
+
+## Part 6 - An applied example of testing changes to your GenAI application before development.
+
+It is important to test how changes to the prompts, data sources or models used in your GenAI application may impact performance before releasing a new version to production. This section walks through an applied example of how to leverage the metrics developed in this workshop.
 
 ## Future work
 The following topics are not covered in this tutorial.
 
-- CICD: how to implement a code first approach to leveraging Azure AI Studio.
-- Few shot prompting: Customize the evaluation metrics with few shot prompts tailored to your use case.
 - Other scenarios: testing for other harms or failure scenarios such as offensive content, jailbreaking attacks or unexpected inputs.
+- Building out a common metrics framework platform approach etc
+- Utilize Prompty and Prompt Library

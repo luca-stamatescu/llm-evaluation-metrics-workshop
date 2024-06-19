@@ -4,6 +4,8 @@
 
 Azure AI Studio provides out-of-the-box LLM evaluation tooling. At the time of writing, this includes Groundedness, Relevance, Coherence, Fluency, GPT Similarity and the F1 Score. There are also metrics relating to Content Safety.
 
+https://learn.microsoft.com/en-us/azure/ai-studio/concepts/evaluation-metrics-built-in?tabs=warning
+
 ## Pre-work
 
 The datasets created by the SME and the Artefact Logging steps should be combined. An example template CSV is included in this step, to show what the input should look like. The headings used in the input template are important, as they will allow the columns to be automatically mapped to the right input. This can be done when running the evaluation manually, but this approach is much simpler to manage.

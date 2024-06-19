@@ -2,9 +2,11 @@
 
 ## Overview
 
-In this section, we will demonstrate how to run a bulk evaluation of a PromptFlow. This step is important for generating the artefacts which will be used in evaluation metrics.
+In this section,a simple RAG application has been provided, to generate the testing artefacts needed for these evaluations. If you already have your own GenAI application, you may skip to the next section.
 
-This is intended to be representative of any generic RAG application, and PromptFlow is not essential to this step. The RAG application can be treated as a black box, and as long as the required inputs and outputs can be logged to a file for use in later steps, the same outcome can be achieved.
+This is intended to be representative of any generic RAG application, and can be treated as a black box. How the application works is unimportant, as long as the required inputs and outputs can be logged to a file for use in later steps.
+
+The LLM evaluation flows are completely decoupled from the orchestration framework used by the RAG application, so this application could have been built in LangChain, Semantic Kernel or directly in python.
 
 ## Setup
 

@@ -1,8 +1,8 @@
 {
   "gpt_retrieval": 1.0,
   "gpt_coherence": 5.0,
-  "ada_similarity": 0.894,
-  "gpt_relevance": 3.0,
+  "ada_similarity": 0.895,
+  "gpt_relevance": 2.0,
   "analytical_retrieval": 0.0,
   "gpt_groundedness": 1.0,
   "gpt_similarity": 2.0,
